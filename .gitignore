@@ -1,0 +1,123 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+// c'est ici on commance le site sans internet
+0 ouvre le terminal : cherche en haut affichage ou les trois points cherche le terminal apres le nouveau terminal
+1 taper npm create vite@latest ./
+2 choisis react puis typescript puis ESLIN , si tu vois (y) tape y puis entre
+3 tape npm run dev , pour voir le lien local de ordinateur
+4 puis tape  npm install -D vite-plugin-pwa
+5 pour verifier tape npm list vite-plugin-pwa 
+6 tu verra vite-plugin-pw@...
+
+7 va dans vite.config.ts de ton fichier en gauche
+replace sa 
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { VitePWA } from 'vite-plugin-pwa'
+
+export default defineConfig({
+  plugins: [
+    react()], })
+
+
+    par sa
+
+    import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { VitePWA } from 'vite-plugin-pwa'
+
+export default defineConfig({
+  plugins: [
+    react(),
+
+    VitePWA({
+      registerType: 'autoUpdate',
+
+      manifest: {
+        name: 'Weather Dashboard',
+        short_name: 'Weather',
+        description: 'Weather Dashboard - Offline PWA',
+        theme_color: '#ffffff',
+        background_color: '#ffffff',
+        display: 'standalone',
+        start_url: '/',
+        scope: '/',
+        icons: [
+          {
+            src: '/favicon.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
+            purpose: 'any'
+          },
+          {
+            src: '/icons.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
+             purpose: 'any'
+          },
+        ],
+      },
+
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,jpg,jpeg}'],
+      },
+    }),
+  ],
+})
+
+8 cree un fichier qui ce nomme vite-env.d.ts dans le dossier  (src)
+
+9 va dans le fichier main.tsx ecrit
+
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
+import { registerSW } from "virtual:pwa-register"
+
+registerSW({ immediate: true }) 
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+
+
+
+10 tape npm install -D vite-plugin-pwa
+11 tape npm run build
+12 tape npm install vite-plugin-pwa
+13 tape npm run build
+14 tape npm run preview
+15 inspect ton site
+16 va dans applis puis services worker coche la case hors connexion ou va dans reseau choisi la case hors connexion
+17 réactualise  ton page si le site affiche sa marche 
+19 fin 
+20 s'il ya des probleme consulte chatgpt
+
