@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -73,3 +74,9 @@ export default defineConfig([
 ])
 
 ```
+=======
+# projet-sans-internet
+ce début du projet react +typescript montre comment on utilise cree un site sans internet. mais pour les API il faut avoir de connexion
+allez dans .gitignore pour voir les instruction
+
+>>>>>>> 273cf9cde099bb754136604144783d775ae6b665
