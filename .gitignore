@@ -90,7 +90,9 @@ export default defineConfig({
   ],
 })
 
-8 cree un fichier qui ce nomme vite-env.d.ts dans le dossier  (src)
+8 cree un fichier qui ce nomme vite-env.d.ts dans le dossier  (src) puis tapes sa dans le fichier
+/// <reference types="vite/client" />
+/// <reference types="vite-plugin-pwa/client" />
 
 9 va dans le fichier main.tsx ecrit
 
